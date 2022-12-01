@@ -2,47 +2,99 @@ import { Then, When } from '@wdio/cucumber-framework'
 import { HomePage } from '../pages/HomePage'
 import { LoginPage } from '../pages/LoginPage'
 import { PageFactory } from '../pages/PageFactory'
-import { TEST_USER } from '../support/constants'
-import { PAGES } from '../support/types'
+import { PasswordResetPage } from '../pages/PasswordResetPage'
+import { SignUpPage } from '../pages/SignUpPage'
+import { LOGIN_VALIDATION_MESSAGES, TEST_USER } from '../support/constants'
+import { PAGES } from '../support/enums'
 
+const randomstring = require("randomstring");
 const homePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const loginPage = PageFactory.getPage(PAGES.LOGIN) as LoginPage
+const signUpPage = PageFactory.getPage(PAGES.SIGN_UP) as SignUpPage
+const resetPasswordPage = PageFactory.getPage(PAGES.RESET_PASSWORD) as PasswordResetPage
 
-When(/^The user clicks on Login button$/, async () => {
+When(/^The user logs in with valid email and valid password$/, async () => {
     await homePage.navigationBar.clickLoginButton()
-})
-
-Then(/^The user sees Login page$/, async () => {
-    await expect(loginPage.getEmailField()).toBeDisabled()
-})
-
-When(/^The user clicks Submit button$/, async () => {
+    await loginPage.login(TEST_USER.email, TEST_USER.password)
     await loginPage.submitForm()
 })
 
-Then(/^The user successfully logged in and sees protection pop-up$/, async () => {
-    await expect(loginPage.getProtectionPopUpMessage()).toHaveText('Давайте проверим, вы робот или нет')
+Then(/^The user sees "Log out" button$/, async () => {
+    expect(await homePage.navigationBar.getLogOutButton()).toBeDisplayed()
 })
 
-Then(/^The user sees validation message '(.+)'$/, async (message: string) => {
-    await expect(loginPage.getValidationMessage()).toHaveText(message)
-})
-
-When(/^The user logs in with valid Email and valid Password$/, async () => {
+When(/^The user clicks "Sign up" button on Login page$/, async () => {
     await homePage.navigationBar.clickLoginButton()
-    await loginPage.fillEmailField(TEST_USER.email)
+    await loginPage.clickSignUpButton()
+})
+
+Then(/^The user sees "Sign up page"$/, async () => {
+    expect(await signUpPage.getForgotPasswordButton()).toBeDisabled()
+})
+
+When(/^The user Logs in with empty email and valid password$/, async () => {
+    await homePage.navigationBar.clickLoginButton()
+    await loginPage.fillPasswordField(TEST_USER.password)
+    await loginPage.submitForm()
+})
+
+Then(/^The user sees "Empty email validation message"$/, async () => {
+    expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emptyEmailValidationMessage)
+})
+
+When(/^The user Logs in with invalid email (.+) and valid password$/, async (invalidEmail: string) => {
+    await homePage.navigationBar.clickLoginButton()
+    await loginPage.fillEmailField(invalidEmail)
     await loginPage.fillPasswordField(TEST_USER.password)
     await loginPage.submitForm()
 })
 
-When(/^The user logs in with valid Email and empty Password$/, async () => {
+Then(/^The user sees "Invalid email validation" validation message$/, async () => {
+    expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.invalidEmailValidationMessage)
+})
+
+When(/^The user Logs in with a valid email that doesn't exist in the system$/, async () => {
+    await homePage.navigationBar.clickLoginButton()
+    await loginPage.fillEmailField(`${randomstring.generate(8)}@gmail.com`)
+    await loginPage.fillPasswordField(TEST_USER.password)
+    await loginPage.submitForm()
+})
+
+Then(/^The user sees "Email doesn't exist validation message" validation message$/, async () => {
+    expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emailDoesNotExistValidationMessage)
+})
+
+When(/^The user Logs in with valid email and empty password$/, async () => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.fillEmailField(TEST_USER.email)
     await loginPage.submitForm()
 })
 
-When(/^The user logs in with empty Email and valid Password$/, async () => {
+When(/^The user Logs in with valid email and invalid password$/, async () => {
     await homePage.navigationBar.clickLoginButton()
-    await loginPage.fillPasswordField(TEST_USER.password)
+    await loginPage.fillEmailField(TEST_USER.email)
+    loginPage.fillPasswordField(randomstring.generate(8))
     await loginPage.submitForm()
+})
+
+Then(/^The user sees "Invalid password validation message"$/, async () => {
+    expect(await loginPage.getValidationAlert()).toHaveText(LOGIN_VALIDATION_MESSAGES.invalidPasswordValidationMessage)
+})
+
+When(/^The user clicks "Forgot password" button on Login page$/, async () => {
+    await homePage.navigationBar.clickLoginButton()
+    await loginPage.clickForgotPasswordButton()
+})
+
+Then(/^The user sees Reset password page$/, async () => {
+    expect(await resetPasswordPage.getEmailField()).toBeDisplayed()
+})
+
+When(/^The user clicks "Home page" button navigation button on Login page$/, async () => {
+    await homePage.navigationBar.clickLoginButton()
+    await loginPage.clickHomePageButton()
+})
+
+Then(/^The user sees Home page$/, async () => {
+    expect(await homePage.getWhereToBeginButton()).toBeDisplayed()
 })

@@ -1,26 +1,75 @@
-import { NAVIGATION_ITEMS } from '../../support/types'
-
 export class NavigationBar {
 
-    public getNavigationItemByInnerLink = async (link: NAVIGATION_ITEMS) => {
-        return await $(`a[href = '${link}'] span.b-main-navigation__text`)
-    }
-
-    public clickOnNavigationItemByInnerLink = async (link: NAVIGATION_ITEMS) => {
-        const navigationItem = await this.getNavigationItemByInnerLink(link)
-        await navigationItem.waitForDisplayed()
-        await navigationItem.click()
-    }
-
     public getLoginButton = async () => {
-        return await $('div.auth-bar__item--text')
+        return await $('a[id="w3loginbtn"]')
     }
 
     public clickLoginButton = async () => {
-        const loginButton = await this.getLoginButton()
-        loginButton.waitForDisplayed()
-        loginButton.click()
+        await (await this.getLoginButton()).click()
     }
+
+    public getLogOutButton = async () => {
+        return await $('button._tFEpH')
+    }
+
+    public clickLogOutButton = async () => {
+        await (await this.getLogOutButton()).click()
+    }
+
+    public getHomePageNavigationButton = async () => {
+        return await $('a[href="https://www.w3schools.com "]')
+    }
+
+    public clickHomePageButton = async () => {
+        await (await this.getHomePageNavigationButton()).click()
+    }
+
+    public getNavigationItemByName = async (name: string) => {
+        return await $(`//div[contains(@class, 'w3-bar')]/a[contains(text(), "${name}")]`)
+    }
+
+    public clickNavigationItemByName = async (name: string) => {
+        await (await this.getNavigationItemByName(name)).click()
+    }
+
+    public getItemFromDropdownMenuByName = async (name: string) => {
+        return $(`//div[contains(@class, "w3-row-padding")]//div[contains(@class, 'w3-col')]/a[contains(text(), "${name}")]`)
+    }
+
+    public clickItemFromDropdownMenuByName = async (name: string) => {
+        await (await this.getItemFromDropdownMenuByName(name)).click()
+    }
+
+    public getThemeSwitcher = () => {
+        return $(`a[xxtitle="Toggle Dark Code"] i`)
+    }
+
+    public clickThemeSwitcher = () => {
+        this.getThemeSwitcher().click()
+    }
+
+    public getThemeFromDropdownByName = async (themeName: string) => {
+        return await $(`//label[contains(text(), '${themeName}')]`)
+    }
+
+    // public switchThemeByName = (themeName: string) => {
+    //     this.getThemeSwitcher().trigger('mouseover')
+    //     this.getThemeFromDropdownByName(themeName).click()
+    // }
+
+    public getPageByTheme = async (themeName: string) => {
+        return await $(`//body[contains(@class, '${themeName}')]`)
+    }
+
+    public getButtonWithOuterLink = async (title: string) => {
+        return await $(`a[title = "${title}"]`)
+    }
+
+    // public clickOnButtonWithOuterLink = (title: string) => {
+    //     this.getButtonWithOuterLink(title)
+    //         .invoke('removeAttr', 'target')
+    //         .click()
+    // }
 }
 
 export const navigationBar = new NavigationBar()

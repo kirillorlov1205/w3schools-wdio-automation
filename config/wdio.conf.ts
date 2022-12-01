@@ -51,7 +51,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        'features/**/*.feature'
+        'features/**/*login.feature'
     ],
     // Patterns to exclude.
     exclude: [
@@ -73,18 +73,18 @@ export const config: Options.Testrunner = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 2,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
     // https://saucelabs.com/platform/platform-configurator
     //
     capabilities: [{
-    
+
         // maxInstances can get overwritten per capability. So if you have an in-house Selenium
         // grid with only 5 firefox instances available you can make sure that not more than
         // 5 instances get started at a time.
-        maxInstances: 2,
+        maxInstances: 1,
         //
         browserName: 'chrome',
         acceptInsecureCerts: true,
@@ -143,8 +143,8 @@ export const config: Options.Testrunner = {
     // Services take over a specific job you don't want to take care of. They enhance
     // your test setup with almost no effort. Unlike plugins, they don't add new
     // commands. Instead, they hook themselves up into the test process.
-    services: ['chromedriver','geckodriver'],
-    
+    services: ['chromedriver', 'geckodriver'],
+
     // Framework you want to run your specs with.
     // The following are supported: Mocha, Jasmine, and Cucumber
     // see also: https://webdriver.io/docs/frameworks
@@ -165,10 +165,12 @@ export const config: Options.Testrunner = {
     // Test reporter for stdout.
     // The only one supported by default is 'dot'
     // see also: https://webdriver.io/docs/dot-reporter
-    reporters: [['allure', {outputDir: 'assets/allure-results'}]],
+    reporters:
+        ['spec', ['allure', { outputDir: 'assets/allure-results' }]],
     //
     // If you are using Cucumber you need to specify the location of your step definitions.
     cucumberOpts: {
+        // tagFilter: ['@Test'],
         // <string[]> (file/dir) require files before executing features
         require: ['src/step-definitions/**/*.ts'],
         // <boolean> show full backtrace for errors
@@ -192,7 +194,7 @@ export const config: Options.Testrunner = {
         // <boolean> Enable this config to treat undefined definitions as warnings.
         ignoreUndefinedDefinitions: false
     },
-    
+
     //
     // =====
     // Hooks
@@ -206,9 +208,9 @@ export const config: Options.Testrunner = {
      * @param {Object} config wdio configuration object
      * @param {Array.<Object>} capabilities list of capabilities details
      */
-     onPrepare: function () {
-        rmSync('assets/allure-report', {recursive: true, force: true});
-        rmSync('assets/allure-results', {recursive: true, force: true})
+    onPrepare: function () {
+        rmSync('assets/allure-report', { recursive: true, force: true });
+        rmSync('assets/allure-results', { recursive: true, force: true })
     },
     /**
      * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -315,7 +317,7 @@ export const config: Options.Testrunner = {
      */
     // afterFeature: function (uri, feature) {
     // },
-    
+
     /**
      * Runs after a WebdriverIO command gets executed
      * @param {String} commandName hook command name
