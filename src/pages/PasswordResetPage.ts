@@ -60,6 +60,14 @@ export class PasswordResetPage extends BasePage {
         return await $('div.Alert_iwrp__5q1xH')
     }
 
+    public getHomePageButton = async () => {
+        return await $('a[href="https://w3schools.com"]')
+    }
+
+    public clickHomePageButton = async () => {
+        await (await this.getHomePageButton()).click()
+    }
+
     static getInstance() {
         if (!this.instance) {
             this.instance = new PasswordResetPage()

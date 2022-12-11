@@ -51,7 +51,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        'features/**/*password-reset.feature'
+        'features/**/*theme-change.feature'
     ],
     // Patterns to exclude.
     exclude: [
