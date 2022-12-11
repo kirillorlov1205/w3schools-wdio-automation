@@ -43,19 +43,6 @@ export const SIGN_UP_INVALID_NAMES = {
     'Has special character': 'Name!',
 }
 
-export const REFERENCES_PAGE_TITLES_MAP = {
-    'HTML Tag Reference': `tags/default.asp`,
-    'HTML Browser Support': 'tags/ref_html_browsersupport.asp',
-    'HTML Event Reference': 'tags/ref_eventattributes.asp',
-    'HTML Color Reference': 'colors/default.asp',
-    'HTML Attribute Reference': 'tags/ref_attributes.asp',
-    'HTML Canvas Reference': 'tags/ref_canvas.asp',
-    'XML DOM Reference': 'xml/dom_nodetype.asp',
-    'JavaScript Reference': 'jsref/default.asp',
-    'HTML DOM Reference': 'jsref/default.asp',
-    'HTML Character Sets': 'charsets/default.asp',
-}
-
 export const TUTORIALS_PAGE_TITLES_MAP = {
     'Learn HTML': `html/default.asp`,
     'Learn CSS': 'css/default.asp',

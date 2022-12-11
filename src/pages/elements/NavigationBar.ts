@@ -33,29 +33,29 @@ export class NavigationBar {
     }
 
     public getItemFromDropdownMenuByName = async (name: string) => {
-        return $(`//div[contains(@class, "w3-row-padding")]//div[contains(@class, 'w3-col')]/a[contains(text(), "${name}")]`)
+        return await $(`//div[contains(@class, "w3-row-padding")]//div[contains(@class, 'w3-col')]/a[contains(text(), "${name}")]`)
     }
 
     public clickItemFromDropdownMenuByName = async (name: string) => {
         await (await this.getItemFromDropdownMenuByName(name)).click()
     }
 
-    public getThemeSwitcher = () => {
-        return $(`a[xxtitle="Toggle Dark Code"] i`)
+    public getThemeSwitcher = async () => {
+        return await $(`a[xxtitle="Toggle Dark Code"] i`)
     }
 
-    public clickThemeSwitcher = () => {
-        this.getThemeSwitcher().click()
+    public clickThemeSwitcher = async () => {
+        await (await this.getThemeSwitcher()).click()
     }
 
     public getThemeFromDropdownByName = async (themeName: string) => {
         return await $(`//label[contains(text(), '${themeName}')]`)
     }
 
-    // public switchThemeByName = (themeName: string) => {
-    //     this.getThemeSwitcher().trigger('mouseover')
-    //     this.getThemeFromDropdownByName(themeName).click()
-    // }
+    public switchThemeByName = async (themeName: string) => {
+        await (await this.getThemeSwitcher()).moveTo()
+        await (await this.getThemeFromDropdownByName(themeName)).click()
+    }
 
     public getPageByTheme = async (themeName: string) => {
         return await $(`//body[contains(@class, '${themeName}')]`)
