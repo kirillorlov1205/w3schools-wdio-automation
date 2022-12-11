@@ -1,5 +1,5 @@
 @navigation
-Feature: Onliner Home Page Navigation
+Feature: Home page navigation
 
     Scenario Outline: As a user, i can open page by Navigation bar
         Given The user opens web page https://www.onliner.by

@@ -32,7 +32,7 @@ Then(/^The user sees "Sign up page"$/, async () => {
     expect(await signUpPage.getForgotPasswordButton()).toBeDisabled()
 })
 
-When(/^The user Logs in with empty email and valid password$/, async () => {
+When(/^The user logs in with empty email and valid password$/, async () => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.fillPasswordField(TEST_USER.password)
     await loginPage.submitForm()
@@ -42,7 +42,7 @@ Then(/^The user sees "Empty email validation message"$/, async () => {
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emptyEmailValidationMessage)
 })
 
-When(/^The user Logs in with invalid email (.+) and valid password$/, async (invalidEmail: string) => {
+When(/^The user logs in with invalid email (.+) and valid password$/, async (invalidEmail: string) => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.fillEmailField(invalidEmail)
     await loginPage.fillPasswordField(TEST_USER.password)
@@ -53,7 +53,7 @@ Then(/^The user sees "Invalid email validation" validation message$/, async () =
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.invalidEmailValidationMessage)
 })
 
-When(/^The user Logs in with a valid email that doesn't exist in the system$/, async () => {
+When(/^The user logs in with a valid email that doesn't exist in the system$/, async () => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.fillEmailField(`${randomstring.generate(8)}@gmail.com`)
     await loginPage.fillPasswordField(TEST_USER.password)
@@ -64,13 +64,13 @@ Then(/^The user sees "Email doesn't exist validation message" validation message
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emailDoesNotExistValidationMessage)
 })
 
-When(/^The user Logs in with valid email and empty password$/, async () => {
+When(/^The user logs in with valid email and empty password$/, async () => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.fillEmailField(TEST_USER.email)
     await loginPage.submitForm()
 })
 
-When(/^The user Logs in with valid email and invalid password$/, async () => {
+When(/^The user logs in with valid email and invalid password$/, async () => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.fillEmailField(TEST_USER.email)
     loginPage.fillPasswordField(randomstring.generate(8))
@@ -90,7 +90,7 @@ Then(/^The user sees Reset password page$/, async () => {
     expect(await resetPasswordPage.getEmailField()).toBeDisplayed()
 })
 
-When(/^The user clicks "Home page" button navigation button on Login page$/, async () => {
+When(/^The user clicks "Home page" navigation button on Login page$/, async () => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.clickHomePageButton()
 })
