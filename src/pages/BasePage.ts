@@ -9,11 +9,11 @@ export class BasePage {
         this.navigationBar = new NavigationBar()
     }
 
-    get getPageTitle() {
-        return browser.getTitle()
+    getPageTitle = async () => {
+        return await browser.getTitle()
     }
 
-    get getCurrentUrl() {
-        return browser.getUrl()
+    getCurrentUrl = async () => {
+        return (await browser.getUrl()) as String
     }
 }
