@@ -4,13 +4,13 @@ Feature: Home page search
     Background:
         Given The user opens web page "https://www.w3schools.com/"
 
-    # Scenario: Text searching
-    #     When The user fills search field on Home page with text "testText"
-    #     Then The user sees search dropdown
+    Scenario: Text searching
+        When The user fills search field on Home page with text "testText"
+        Then The user sees search dropdown
 
-    # Scenario: Searching without text providing
-    #     When The user clicks "Submit search" button on Home page
-    #     Then The user doesn't see search dropdown
+    Scenario: Searching without text providing
+        When The user clicks "Submit search" button on Home page
+        Then The user doesn't see search dropdown
 
     Scenario Outline: Searching for page by title
         When The user provides text "<Title>" in the search field and clicks "Submit search" button
@@ -27,12 +27,3 @@ Feature: Home page search
             | JavaScript Reference     | jsref/default.asp                |
             | HTML DOM Reference       | jsref/default.asp                |
             | HTML Character Sets      | charsets/default.asp             |
-
-# for (const title in REFERENCES_PAGE_TITLES_MAP) {
-# const pageLink = REFERENCES_PAGE_TITLES_MAP[title as keyof typeof REFERENCES_PAGE_TITLES_MAP]
-# it(`Should search for "${title}" page`, () => {
-# homePage.fillSearchFieldOnHomePage(title)
-# homePage.clickSubmitSearchButtonOnHomePage()
-# homePage.getCurrentUrl().should('eq', `${BASE_URL}${pageLink}`)
-# })
-# }

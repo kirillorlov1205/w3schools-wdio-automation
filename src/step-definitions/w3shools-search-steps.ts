@@ -55,10 +55,3 @@ When(/^The user provides text "(.+)" in the search field and clicks "Submit sear
     await homePage.fillSearchFieldOnHomePage(title)
     await homePage.clickSubmitSearchButtonOnHomePage()
 })
-
-Then(/^The user sees page with url "(.+)"$/, async (url: string) => {
-    expect(await homePage.getCurrentUrl()).toEqual(url)
-})
-
-
-
