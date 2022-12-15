@@ -1,21 +1,33 @@
 import { Then, When } from '@wdio/cucumber-framework'
 import { HomePage } from '../pages/HomePage'
 import { PageFactory } from '../pages/PageFactory'
-import { BASE_URL } from '../support/constants'
 import { NAVIGATION_ITEMS_NAMES, PAGES } from '../support/enums'
 
 const homePage = PageFactory.getPage(PAGES.HOME) as HomePage
 
-// When(/^The user clicks navigation item with name "Tutorials"$/, async () => {
-// })
-
-When(/^The user clicks item with name "(.+)" from dropdown menu "Tutorials"$/, async (name: string) => {
+When(/^The user clicks navigation item with name "Tutorials"$/, async () => {
     await homePage.navigationBar.clickNavigationItemByName(NAVIGATION_ITEMS_NAMES.TUTORIALS)
+})
+
+When(/^The user clicks item with name "(.+)" from dropdown menu$/, async (name: string) => {
     await homePage.navigationBar.clickItemFromDropdownMenuByName(name)
 })
 
 When(/^The user clicks navigation item with name "References"$/, async () => {
     await homePage.navigationBar.clickNavigationItemByName(NAVIGATION_ITEMS_NAMES.REFERENCES)
+})
+
+When(/^The user clicks navigation item with name "Exercises"$/, async () => {
+    await homePage.navigationBar.clickNavigationItemByName(NAVIGATION_ITEMS_NAMES.EXERCISES)
+})
+
+When(/^The user clicks navigation item with outer link by title "(.+)"$/, async (title: string) => {
+    await homePage.navigationBar.clickOnButtonWithOuterLink(title)
+})
+
+Then(/^The page with url "(.+)" is opened in a new tab$/, async (url: string) => {
+    await browser.switchWindow(url)
+    expect(browser).toHaveUrl(url)
 })
 
 When(/^The user selects "(.+)" page theme$/, async (themeName: string) => {

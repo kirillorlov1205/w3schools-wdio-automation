@@ -11,7 +11,5 @@ Given(/^The user opens web page "(.+)"$/, (url: string) => {
 })
 
 Then(/^The user sees page with url "(.+)"$/, async (url: string) => {
-    console.log(await homePage.getCurrentUrl())
-    console.log(url)
-    expect(await homePage.getCurrentUrl()).toEqual(`${BASE_URL}${url}`)
+    expect(browser).toHaveUrl(`${BASE_URL}${url}`)
 })

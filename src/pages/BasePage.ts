@@ -14,6 +14,6 @@ export class BasePage {
     }
 
     getCurrentUrl = async () => {
-        return (await browser.getUrl()) as String
+        return await browser.getUrl()
     }
 }
