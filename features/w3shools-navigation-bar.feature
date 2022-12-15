@@ -2,12 +2,12 @@
 Feature: Navigation bar
 
     Background:
-        Given The user opens web page 'https://www.w3schools.com/'
+        Given The user opens web page "https://www.w3schools.com/"
 
-    Scenario Outline: Transfer to the page by name from 'Tutorials' dropdown
-        When The user clicks navigation item with name 'Tutorials'
-        And The user clicks item from dropdown menu with name '<Name>'
-        Then The user sees '<Name>' page with url '<Url>'
+    Scenario Outline: Transfer to the page by name from "Tutorials" dropdown
+        When The user clicks navigation item with name "Tutorials"
+        And The user clicks item with name "<Name>" from dropdown menu
+        Then The user sees page with url "<Url>"
 
         Examples:
             | Name            | Url                         |
@@ -22,10 +22,10 @@ Feature: Navigation bar
             | Learn SVG       | graphics/svg_intro.asp      |
             | Learn Canvas    | graphics/canvas_intro.asp   |
 
-    Scenario Outline: Transfer to the page by name from 'References' dropdown
-        When The user clicks navigation item with name 'References'
-        And The user clicks item from dropdown menu with name '<Name>'
-        Then The user sees '<Name>' page with url '<Url>'
+    Scenario Outline: Transfer to the page by name from "References" dropdown
+        When The user clicks navigation item with name "References"
+        And The user clicks item with name "<Name>" from dropdown menu
+        Then The user sees page with url "<Url>"
 
         Examples:
             | Name                     | Url                              |
@@ -40,10 +40,10 @@ Feature: Navigation bar
             | HTML DOM Reference       | jsref/default.asp                |
             | HTML Character Sets      | charsets/default.asp             |
 
-    Scenario Outline: Transfer to the page by Name from 'Exercises' dropdown
-        When The user clicks navigation item with name 'Exercises'
-        And The user clicks item from dropdown menu with name '<Name>'
-        Then The user sees '<Name>' page with url '<Url>'
+    Scenario Outline: Transfer to the page by Name from "Exercises" dropdown
+        When The user clicks navigation item with name "Exercises"
+        And The user clicks item with name "<Name>" from dropdown menu
+        Then The user sees page with url "<Url>"
 
         Examples:
             | Name                 | Url                     |
@@ -52,10 +52,10 @@ Feature: Navigation bar
             | JavaScript Exercises | js/js_exercises.asp     |
 
     Scenario Outline: Transfer to the page by clicking on button with outer link
-        When The user clicks navigation item with outer link
-        Then The user sees '<Name>' page with url '<Url>'
+        When The user clicks navigation item with outer link by title "<Title>"
+        Then The page with url "<Url>" is opened in a new tab
 
         Examples:
-            | Name                                       | Url                                                     |
+            | Title                                      | Url                                                     |
             | Courses                                    | https://campus.w3schools.com/collections/course-catalog |
             | Get Your Own Website With W3Schools Spaces | https://www.w3schools.com/spaces/                       |

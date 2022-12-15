@@ -2,19 +2,19 @@
 Feature: Home page search
 
     Background:
-        Given The user opens web page 'https://www.w3schools.com/'
+        Given The user opens web page "https://www.w3schools.com/"
 
     Scenario: Text searching
-        When The user fiils search field with text ''
+        When The user fills search field on Home page with text "testText"
         Then The user sees search dropdown
 
     Scenario: Searching without text providing
-        When The user clicks "Submit search" button
+        When The user clicks "Submit search" button on Home page
         Then The user doesn't see search dropdown
 
     Scenario Outline: Searching for page by title
-        When The user provides text '<Title>' in the search field and clicks 'Submit search' button
-        Then The user sees '<Title>' page with url '<Url>'
+        When The user provides text "<Title>" in the search field and clicks "Submit search" button
+        Then The user sees page with url "<Url>"
 
         Examples:
             | Title                    | Url                              |

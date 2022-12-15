@@ -1,37 +1,32 @@
 export class SearchField {
 
-    public getSearchField = async () => {
-        return await $('input.fast-search__input')
+    public getSearchIcon = async () => {
+        return await $('a.w3searchbtntopnav')
     }
 
-    public clickSearchField = async () => {
-        await (await this.getSearchField()).click()
+    public clickSearchIcon = async () => {
+        await (await this.getSearchIcon()).click()
+    }
+
+    public getSearchField = async () => {
+        return await $('input[name = "search"]')
+    }
+
+    public getSubmitSearchButton = async () => {
+        return await $('button.gsc-search-button')
+    }
+
+    public clickSubmitSearchButton = async () => {
+        await (await this.getSubmitSearchButton()).click()
     }
 
     public fillSearchField = async (str: string) => {
         await (await this.getSearchField()).setValue(str)
-        await this.getSearchModalPage()
-        await $('input.search__input').setValue(str)
+        await this.clickSubmitSearchButton()
     }
 
     public getSearchModalPage = async () => {
-        return await browser.switchToFrame(await $('iframe[class="modal-iframe"]'))
-    }
-
-    public getSearchTabsItemByName = async (name: string) => {
-        return await $(`//div[text() = '${name}']`)
-    }
-
-    public getSearchFilterItemByName = async (name: string) => {
-        return await $(`//a[text() = '${name}']`)
-    }
-
-    public getCatalogSearchResultsList = async () => {
-        return await $('ul.search__results')
-    }
-
-    public getResultItemFromForumList = async () => {
-        return await $('div.result__item_forum')
+        return await $('div.gsc-resultsbox-visible')
     }
 }
 

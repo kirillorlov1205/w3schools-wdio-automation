@@ -65,11 +65,9 @@ export class NavigationBar {
         return await $(`a[title = "${title}"]`)
     }
 
-    // public clickOnButtonWithOuterLink = (title: string) => {
-    //     this.getButtonWithOuterLink(title)
-    //         .invoke('removeAttr', 'target')
-    //         .click()
-    // }
+    public clickOnButtonWithOuterLink = async (title: string) => {
+        await (await this.getButtonWithOuterLink(title)).click()
+    }
 }
 
 export const navigationBar = new NavigationBar()

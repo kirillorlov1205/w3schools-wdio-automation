@@ -51,7 +51,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        'features/**/*theme-change.feature'
+        'features/**/*bar.feature'
     ],
     // Patterns to exclude.
     exclude: [
