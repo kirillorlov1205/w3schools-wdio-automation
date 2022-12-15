@@ -16,7 +16,6 @@ const resetPasswordPage = PageFactory.getPage(PAGES.RESET_PASSWORD) as PasswordR
 When(/^The user logs in with valid email and valid password$/, async () => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.login(TEST_USER.email, TEST_USER.password)
-    await loginPage.submitForm()
 })
 
 Then(/^The user sees "Log out" button$/, async () => {
@@ -28,7 +27,7 @@ When(/^The user clicks "Sign up" button on Login page$/, async () => {
     await loginPage.clickSignUpButton()
 })
 
-Then(/^The user sees "Sign up page"$/, async () => {
+Then(/^The user sees Sign up page$/, async () => {
     expect(await signUpPage.getForgotPasswordButton()).toBeDisabled()
 })
 
@@ -42,14 +41,14 @@ Then(/^The user sees "Empty email validation message"$/, async () => {
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emptyEmailValidationMessage)
 })
 
-When(/^The user logs in with invalid email (.+) and valid password$/, async (invalidEmail: string) => {
+When(/^The user logs in with invalid email "(.+)" and valid password$/, async (invalidEmail: string) => {
     await homePage.navigationBar.clickLoginButton()
     await loginPage.fillEmailField(invalidEmail)
     await loginPage.fillPasswordField(TEST_USER.password)
     await loginPage.submitForm()
 })
 
-Then(/^The user sees "Invalid email validation" validation message$/, async () => {
+Then(/^The user sees "Invalid email validation message"$/, async () => {
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.invalidEmailValidationMessage)
 })
 
@@ -60,7 +59,7 @@ When(/^The user logs in with a valid email that doesn't exist in the system$/, a
     await loginPage.submitForm()
 })
 
-Then(/^The user sees "Email doesn't exist validation message" validation message$/, async () => {
+Then(/^The user sees "Email doesn't exist validation message"$/, async () => {
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emailDoesNotExistValidationMessage)
 })
 

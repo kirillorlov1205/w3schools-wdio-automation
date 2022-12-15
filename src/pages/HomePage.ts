@@ -1,5 +1,4 @@
 import { BasePage } from './BasePage'
-import { NavigationBar, navigationBar } from './elements/NavigationBar'
 import { SearchField, searchField } from './elements/SearchField'
 
 export class HomePage extends BasePage {

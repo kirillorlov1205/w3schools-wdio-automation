@@ -51,7 +51,7 @@ export const config: Options.Testrunner = {
     // will be called from there.
     //
     specs: [
-        'features/**/*bar.feature'
+        'features/**/*login.feature'
     ],
     // Patterns to exclude.
     exclude: [
