@@ -61,12 +61,12 @@ export class NavigationBar {
         return await $(`//body[contains(@class, '${themeName}')]`)
     }
 
-    public getButtonWithOuterLink = async (title: string) => {
+    public getButtonWithOuterLinkByTitle = async (title: string) => {
         return await $(`a[title = "${title}"]`)
     }
 
-    public clickOnButtonWithOuterLink = async (title: string) => {
-        await (await this.getButtonWithOuterLink(title)).click()
+    public clickOnButtonWithOuterLinkByTitle = async (title: string) => {
+        await (await this.getButtonWithOuterLinkByTitle(title)).click()
     }
 }
 

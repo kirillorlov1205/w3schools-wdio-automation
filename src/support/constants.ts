@@ -42,32 +42,3 @@ export const SIGN_UP_INVALID_NAMES = {
     'Has number': 'Name1',
     'Has special character': 'Name!',
 }
-
-export const TUTORIALS_PAGE_TITLES_MAP = {
-    'Learn HTML': `html/default.asp`,
-    'Learn CSS': 'css/default.asp',
-    'Learn RWD': 'css/css_rwd_intro.asp',
-    'Learn Bootstrap': 'bootstrap/bootstrap_ver.asp',
-    'Learn W3.CSS': 'w3css/default.asp',
-    'Learn Colors': 'colors/default.asp',
-    'Learn Icons': 'icons/default.asp',
-    'Learn Graphics': 'graphics/default.asp',
-    'Learn SVG': 'graphics/svg_intro.asp',
-    'Learn Canvas': 'graphics/canvas_intro.asp'
-}
-
-export const EXERCISES_PAGE_TITLES_MAP = {
-    'HTML Exercises': 'html/html_exercises.asp',
-    'CSS Exercises': 'css/css_exercises.asp',
-    'JavaScript Exercises': 'js/js_exercises.asp',
-}
-
-export const THEMES = {
-    'Dark mode': 'darkpagetheme',
-    'Dark code': 'darktheme',
-}
-
-export const OUTER_PAGE_TITLES_MAP = {
-    'Courses': 'https://campus.w3schools.com/collections/course-catalog',
-    'Get Your Own Website With W3Schools Spaces': `${BASE_URL}spaces/`
-}

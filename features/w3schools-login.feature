@@ -10,14 +10,14 @@ Feature: W3schools login
 
     Scenario: Transfer to Sign up page from Login page by clicking "Sign up" on Login page
         When The user clicks "Sign up" button on Login page
-        Then The user sees "Sign up page"
+        Then The user sees Sign up page
 
     Scenario: Validation while logging in with empty email and valid password
         When The user logs in with empty email and valid password
         Then The user sees "Empty email validation message"
 
     Scenario Outline: Validation while logging in with invalid email and valid password
-        When The user logs in with invalid email <Email> and valid password
+        When The user logs in with invalid email "<Email>" and valid password
         Then The user sees "Invalid email validation message"
 
         Examples:
@@ -30,7 +30,7 @@ Feature: W3schools login
 
     Scenario: Validation while logging in with valid email that doesn't exist in the system
         When The user logs in with a valid email that doesn't exist in the system
-        Then The user sees "Email doesn't exist validation message" validation message
+        Then The user sees "Email doesn't exist validation message"
 
     Scenario: Validation while logging in with valid email and empty password
         When The user logs in with valid email and empty password

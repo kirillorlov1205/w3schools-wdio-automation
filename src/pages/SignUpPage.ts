@@ -1,12 +1,27 @@
 import { SIGN_UP_NAME_TYPES } from "../support/enums"
-import { LoginPage } from "./LoginPage"
-
-export class SignUpPage extends LoginPage {
+import { BasePage } from "./BasePage"
+export class SignUpPage extends BasePage {
 
     protected static instance: SignUpPage
 
     constructor() {
         super()
+    }
+
+    public getEmailField = async () => {
+        return await $('input.EmailInput_input_field__6t4Ux')
+    }
+
+    public fillEmailField = async (email: string) => {
+        await (await this.getEmailField()).setValue(email)
+    }
+
+    public getPasswordField = async () => {
+        return await $('input.PasswordInput_input_field__EWMIU')
+    }
+
+    public fillPasswordField = async (password: string) => {
+        await (await this.getPasswordField()).setValue(password)
     }
 
     public getSignUpForFreeButton = async () => {
@@ -60,7 +75,31 @@ export class SignUpPage extends LoginPage {
         await (await this.getResendEmailButton()).click()
     }
 
-    static getInstance() {
+    public getEmailValidationMessage = async () => {
+        return await $('span.EmailInput_email_error__IJxXf')
+    }
+
+    public getSignUpButton = async () => {
+        return await $('//span[contains(text()," Sign up")]')
+    }
+
+    public clickSignUpButton = async () => {
+        await (await this.getSignUpButton()).click()
+    }
+
+    public getValidationAlert = async () => {
+        return await $('div.Alert_iwrp__5q1xH')
+    }
+
+    public getHomePageButton = async () => {
+        return await $('a[href="https://w3schools.com"]')
+    }
+
+    public clickHomePageButton = async () => {
+        await (await this.getHomePageButton()).click()
+    }
+    
+    public static getInstance() {
         if (!this.instance) {
             this.instance = new SignUpPage()
         }

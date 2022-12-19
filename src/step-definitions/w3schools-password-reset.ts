@@ -3,7 +3,7 @@ import { HomePage } from '../pages/HomePage'
 import { LoginPage } from '../pages/LoginPage'
 import { PageFactory } from '../pages/PageFactory'
 import { PasswordResetPage } from '../pages/PasswordResetPage'
-import { LOGIN_VALIDATION_MESSAGES, PASSWORD_RESET_VALIDATION_MESSAGES, TEST_USER } from '../support/constants'
+import { PASSWORD_RESET_VALIDATION_MESSAGES, TEST_USER } from '../support/constants'
 import { PAGES } from '../support/enums'
 
 const randomstring = require("randomstring");

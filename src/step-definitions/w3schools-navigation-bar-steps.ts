@@ -22,7 +22,7 @@ When(/^The user clicks navigation item with name "Exercises"$/, async () => {
 })
 
 When(/^The user clicks navigation item with outer link by title "(.+)"$/, async (title: string) => {
-    await homePage.navigationBar.clickOnButtonWithOuterLink(title)
+    await homePage.navigationBar.clickOnButtonWithOuterLinkByTitle(title)
 })
 
 Then(/^The page with url "(.+)" is opened in a new tab$/, async (url: string) => {
