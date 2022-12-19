@@ -1,8 +1,6 @@
 @navigationBarSearch
 Feature: Navigation bar search
 
-Feature: Navigation bar search
-
     Background:
         Given The user opens web page "https://www.w3schools.com/"
 

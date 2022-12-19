@@ -28,7 +28,7 @@ When(/^The user clicks "Sign up" button on Login page$/, async () => {
 })
 
 Then(/^The user sees Sign up page$/, async () => {
-    expect(await signUpPage.getForgotPasswordButton()).toBeDisabled()
+    expect(await signUpPage.getSignUpForFreeButton()).toBeDisabled()
 })
 
 When(/^The user logs in with empty email and valid password$/, async () => {
