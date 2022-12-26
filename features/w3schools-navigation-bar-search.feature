@@ -13,11 +13,11 @@ Feature: Navigation bar search
         Then The user doesn't see search modal page
 
     Scenario Outline: Searching for for special symbol
-        When The user provides symbol "<Symbol>" in the search field and clicks "Submit search" button
+        When The user provides symbol "<symbol>" in the search field and clicks "Submit search" button
         Then The user sees search modal page
 
         Examples:
-            | Symbol |
+            | symbol |
             | ~      |
             | !      |
             | #      |

@@ -13,11 +13,11 @@ Feature: Home page search
         Then The user doesn't see search dropdown
 
     Scenario Outline: Searching for page by title
-        When The user provides text "<Title>" in the search field and clicks "Submit search" button
-        Then The user sees page with url "<Url>"
+        When The user provides text "<title>" in the search field and clicks "Submit search" button
+        Then The user sees page with url "<url>"
 
         Examples:
-            | Title                    | Url                              |
+            | title                    | url                              |
             | HTML Tag Reference       | tags/default.asp                 |
             | HTML Browser Support     | tags/ref_html_browsersupport.asp |
             | HTML Event Reference     | tags/ref_eventattributes.asp     |

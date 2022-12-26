@@ -59,7 +59,7 @@ When(/^The user provides email "(.+)" email: "(.+)"$/, async (invalidEmail: stri
     await browser.keys('\uE007')
 })
 
-Then(/^The user sees invalid email validation message$/, async () => {
+Then(/^The user sees "invalid email" validation message$/, async () => {
     expect(await resetPasswordPage.getResetPasswordSubmitButton()).toBeDisplayed()
     expect(await resetPasswordPage.getEmailValidationMessage()).toHaveText(PASSWORD_RESET_VALIDATION_MESSAGES.InvalidEmailValidationMessage)
 })

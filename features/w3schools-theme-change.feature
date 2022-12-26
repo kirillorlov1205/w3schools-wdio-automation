@@ -5,13 +5,13 @@ Feature: Navigation bar theme change
         Given The user opens web page "https://www.w3schools.com/"
 
     Scenario Outline: Changing theme of the page
-        When The user selects "<Theme name>" page theme
-        Then The user sees page theme with theme indicatior "<Theme indicatior>"
+        When The user selects "<themeName>" page theme
+        Then The user sees page theme with theme indicatior "<themeIndicatior>"
 
         Examples:
-            | Theme name | Theme indicatior |
-            | Dark mode  | darkpagetheme    |
-            | Dark code  | darktheme        |
+            | themeName | themeIndicatior |
+            | Dark mode | darkpagetheme   |
+            | Dark code | darktheme       |
 
     Scenario Outline: Changing theme of the page by clicking on theme switcher
         When The user clicks on theme switcher

@@ -7,7 +7,6 @@ import { SIGN_UP_VALIDATION_MESSAGES, TEST_USER } from "../support/constants";
 import { PAGES, SIGN_UP_NAME_TYPES } from "../support/enums";
 
 const randomstring = require("randomstring");
-
 const randomEmail = `${randomstring.generate(8)}@gmail.com`.toLowerCase()
 const homePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const loginPage = PageFactory.getPage(PAGES.LOGIN) as LoginPage
@@ -28,7 +27,7 @@ When(/^The user provides empty Email$/, async () => {
     await signUpPage.clickSignUpForFreeButton()
 })
 
-Then(/^The user sees "Empty Email sign-up validation message"$/, async () => {
+Then(/^The user sees "Empty Email sign-up" validation message$/, async () => {
     expect(await signUpPage.getEmailValidationMessage()).toHaveText(SIGN_UP_VALIDATION_MESSAGES.emptyEmailValidationMessage)
 })
 
@@ -39,7 +38,7 @@ When(/^The user provides invalid Email "(.+)"$/, async (invalidEmail: string) =>
     await signUpPage.clickSignUpForFreeButton()
 })
 
-Then(/^The user sees "invalid Email sign-up validation message"$/, async () => {
+Then(/^The user sees "invalid Email sign-up" validation message$/, async () => {
     expect(await signUpPage.getEmailValidationMessage()).toHaveText(SIGN_UP_VALIDATION_MESSAGES.invalidEmailValidationMessage)
 })
 
@@ -65,7 +64,7 @@ When(/^The user provides invalid First Name "(.+)"$/, async (invalidName: string
     await signUpPage.clickSignUpForFreeButton()
 })
 
-Then(/^The user sees "invalid name sign-up validation message"$/, async () => {
+Then(/^The user sees "invalid name sign-up" validation message$/, async () => {
     expect(await signUpPage.getNameInputErrorMessage()).toHaveText(SIGN_UP_VALIDATION_MESSAGES.invalidNameErrorMessage)
 })
 

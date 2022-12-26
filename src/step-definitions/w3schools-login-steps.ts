@@ -7,7 +7,7 @@ import { SignUpPage } from '../pages/SignUpPage'
 import { LOGIN_VALIDATION_MESSAGES, TEST_USER } from '../support/constants'
 import { PAGES } from '../support/enums'
 
-const randomstring = require("randomstring");
+const randomstring = require('randomstring')
 const homePage = PageFactory.getPage(PAGES.HOME) as HomePage
 const loginPage = PageFactory.getPage(PAGES.LOGIN) as LoginPage
 const signUpPage = PageFactory.getPage(PAGES.SIGN_UP) as SignUpPage
@@ -37,7 +37,7 @@ When(/^The user logs in with empty email and valid password$/, async () => {
     await loginPage.submitForm()
 })
 
-Then(/^The user sees "Empty email validation message"$/, async () => {
+Then(/^The user sees "Empty email" validation message$/, async () => {
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emptyEmailValidationMessage)
 })
 
@@ -48,7 +48,7 @@ When(/^The user logs in with invalid email "(.+)" and valid password$/, async (i
     await loginPage.submitForm()
 })
 
-Then(/^The user sees "Invalid email validation message"$/, async () => {
+Then(/^The user sees "Invalid email" validation message$/, async () => {
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.invalidEmailValidationMessage)
 })
 
@@ -59,7 +59,7 @@ When(/^The user logs in with a valid email that doesn't exist in the system$/, a
     await loginPage.submitForm()
 })
 
-Then(/^The user sees "Email doesn't exist validation message"$/, async () => {
+Then(/^The user sees "Email doesn't exist" validation message$/, async () => {
     expect(await loginPage.getEmailValidationMessage()).toHaveText(LOGIN_VALIDATION_MESSAGES.emailDoesNotExistValidationMessage)
 })
 
@@ -76,7 +76,7 @@ When(/^The user logs in with valid email and invalid password$/, async () => {
     await loginPage.submitForm()
 })
 
-Then(/^The user sees "Invalid password validation message"$/, async () => {
+Then(/^The user sees "Invalid password" validation message$/, async () => {
     expect(await loginPage.getValidationAlert()).toHaveText(LOGIN_VALIDATION_MESSAGES.invalidPasswordValidationMessage)
 })
 
