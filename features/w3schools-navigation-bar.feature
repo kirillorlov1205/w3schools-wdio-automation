@@ -6,11 +6,11 @@ Feature: Navigation bar
 
     Scenario Outline: Transfer to the page by name from "Tutorials" dropdown
         When The user clicks navigation item with name "Tutorials"
-        And The user clicks item with name "<Name>" from dropdown menu
-        Then The user sees page with url "<Url>"
+        And The user clicks item with name "<name>" from dropdown menu
+        Then The user sees page with url "<url>"
 
         Examples:
-            | Name            | Url                         |
+            | name            | url                         |
             | Learn HTML      | html/default.asp            |
             | Learn CSS       | css/default.asp             |
             | Learn RWD       | css/css_rwd_intro.asp       |
@@ -24,11 +24,11 @@ Feature: Navigation bar
 
     Scenario Outline: Transfer to the page by name from "References" dropdown
         When The user clicks navigation item with name "References"
-        And The user clicks item with name "<Name>" from dropdown menu
-        Then The user sees page with url "<Url>"
+        And The user clicks item with name "<name>" from dropdown menu
+        Then The user sees page with url "<url>"
 
         Examples:
-            | Name                     | Url                              |
+            | name                     | url                              |
             | HTML Tag Reference       | tags/default.asp                 |
             | HTML Browser Support     | tags/ref_html_browsersupport.asp |
             | HTML Event Reference     | colors/default.asp               |
@@ -42,20 +42,20 @@ Feature: Navigation bar
 
     Scenario Outline: Transfer to the page by Name from "Exercises" dropdown
         When The user clicks navigation item with name "Exercises"
-        And The user clicks item with name "<Name>" from dropdown menu
-        Then The user sees page with url "<Url>"
+        And The user clicks item with name "<name>" from dropdown menu
+        Then The user sees page with url "<url>"
 
         Examples:
-            | Name                 | Url                     |
+            | name                 | url                     |
             | HTML Exercises       | html/html_exercises.asp |
             | CSS Exercises        | css/css_exercises.asp   |
             | JavaScript Exercises | js/js_exercises.asp     |
 
     Scenario Outline: Transfer to the page by clicking on button with outer link
-        When The user clicks navigation item with outer link by title "<Title>"
-        Then The page with url "<Url>" is opened in a new tab
+        When The user clicks navigation item with outer link by title "<title>"
+        Then The page with url "<url>" is opened in a new tab
 
         Examples:
-            | Title                                      | Url                                                     |
+            | title                                      | url                                                     |
             | Courses                                    | https://campus.w3schools.com/collections/course-catalog |
             | Get Your Own Website With W3Schools Spaces | https://www.w3schools.com/spaces/                       |

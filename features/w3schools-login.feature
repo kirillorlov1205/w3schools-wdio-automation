@@ -4,7 +4,7 @@ Feature: W3schools login
     Background:
         Given The user opens web page "https://www.w3schools.com/"
 
-    Scenario: Log in with valid credentials
+    Scenario: Valid credentials
         When The user logs in with valid email and valid password
         Then The user sees "Log out" button
 
@@ -12,33 +12,33 @@ Feature: W3schools login
         When The user clicks "Sign up" button on Login page
         Then The user sees Sign up page
 
-    Scenario: Validation while logging in with empty email and valid password
+    Scenario: Empty email
         When The user logs in with empty email and valid password
-        Then The user sees "Empty email validation message"
+        Then The user sees "Empty email" validation message
 
-    Scenario Outline: Validation while logging in with invalid email and valid password
-        When The user logs in with invalid email "<Email>" and valid password
-        Then The user sees "Invalid email validation message"
+    Scenario Outline: Invalid email
+        When The user logs in with invalid email "<email>" and valid password
+        Then The user sees "Invalid email" validation message
 
         Examples:
-            | Email                    |
+            | email                    |
             | abc#def@mail.com         |
             | abc.def@mail.c           |
             | abc.def@mail#archive.com |
             | abc.def@mail             |
             | abc.def@mail..com        |
 
-    Scenario: Validation while logging in with valid email that doesn't exist in the system
+    Scenario: Valid email that doesn't exist in the system
         When The user logs in with a valid email that doesn't exist in the system
-        Then The user sees "Email doesn't exist validation message"
+        Then The user sees "Email doesn't exist" validation message
 
-    Scenario: Validation while logging in with valid email and empty password
+    Scenario: empty password
         When The user logs in with valid email and empty password
-        Then The user sees "Invalid password validation message"
+        Then The user sees "Invalid password" validation message
 
-    Scenario: Validation while logging in with valid email and invalid password
+    Scenario: Invalid password
         When The user logs in with valid email and invalid password
-        Then The user sees "Invalid password validation message"
+        Then The user sees "Invalid password" validation message
 
     Scenario: Transfer to Reset password page from Login page
         When The user clicks "Forgot password" button on Login page

@@ -20,19 +20,19 @@ Feature: W3schools password reset
         When The user clicks "Return to Login" button on Password reset page
         Then The user sees "Login page"
 
-    Scenario Outline: Validation while resetting password with invalid email
-        When The user provides email "<Email mistake type>" email: "<Email>"
-        Then The user sees invalid email validation message
+    Scenario Outline: Password resetting with invalid email
+        When The user provides email "<emailMistakeType>" email: "<email>"
+        Then The user sees "invalid email" validation message
 
         Examples:
-            | Email                    | Email mistake type            |
+            | email                    | emailMistakeType              |
             | abc#def@mail.com         | with invalid character prefix |
             | abc.def@mail.c           | with invalid top domain       |
             | abc.def@mail#archive.com | with invalid character domain |
             | abc.def@mail             | without top domain            |
             | abc.def@mail..com        | with two dots in top domain   |
 
-    Scenario: Validation while resetting password with email that doesn't exist in the system
+    Scenario: Password resetting with email that doesn't exist in the system
         When The user provides email that doesn't exist in the system
         Then The user sees "email doesn't exist" alert
 
